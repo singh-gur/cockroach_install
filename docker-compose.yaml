@@ -1,0 +1,13 @@
+services:
+  crdb:
+    restart: always
+    image: regv2.gsingh.io/core/cockroachdb/cockroach:v23.2.21
+    ports:
+      - "26257:26257"
+      - "8080:8080"
+    command: start-single-node --certs-dir=/certs
+    volumes:
+      - "${PWD}/dbdata:/cockroach/cockroach-data"
+      - "${PWD}/certs:/certs"
+
+
