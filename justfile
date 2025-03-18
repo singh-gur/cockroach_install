@@ -32,11 +32,11 @@ stop:
 	@docker compose down
 
 cleanup:
-	@rm ./certs/*
-	@rm ca.key
+	@rm ./certs/* || true
+	@rm ca.key || true
 
 hard-cleanup: cleanup
-	@sudo rm -rf ./dbdata
+	@sudo rm -rf ./dbdata || true
 
 install-cli:
 	@wget https://binaries.cockroachdb.com/cockroach-{{VERSION}}.linux-amd64.tgz -P /tmp
